@@ -1,18 +1,18 @@
 package edu.hw1.utils;
 
 public class DigitsHelper {
-    public static final int BASE_10 = 10;
-    public static final int BASE_2 = 2;
+    public static final short BASE_10 = 10;
+    public static final short BASE_2 = 2;
 
     private DigitsHelper() {
     }
 
-    public static int[] toDigitsArray(long number, int digitsCount, int base) {
-        int[] digits = new int[digitsCount];
+    public static short[] toDigitsArray(long number, int digitsCount, short base) {
+        short[] digits = new short[digitsCount];
         long n = number;
 
         for (int i = digitsCount - 1; i >= 0; i--) {
-            digits[i] = (int) (n % base);
+            digits[i] = (short) (n % base);
             n /= base;
         }
 

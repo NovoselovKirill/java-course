@@ -14,9 +14,9 @@ public class Task8 {
             throw new IllegalArgumentException();
         }
 
-        for (int y = 0; y < BOARD_SIZE; y++) {
-            for (int x = 0; x < BOARD_SIZE; x++) {
-                if (board[y][x] && canCapture(board, x, y)) {
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int column = 0; column < BOARD_SIZE; column++) {
+                if (board[row][column] && canCapture(board, row, column)) {
                     return false;
                 }
             }
@@ -25,18 +25,18 @@ public class Task8 {
         return true;
     }
 
-    private static boolean canCapture(boolean[][] board, int x, int y) {
+    private static boolean canCapture(boolean[][] board, int row, int column) {
         for (var dx : DELTAS) {
             for (var dy : DELTAS) {
                 if (Math.abs(dx) == Math.abs(dy)) {
                     continue;
                 }
-                int x0 = x + dx;
-                int y0 = y + dy;
-                if (!isInBound(x0) || !isInBound(y0)) {
+                int column0 = column + dx;
+                int row0 = row + dy;
+                if (isNotInBound(column0) || isNotInBound(row0)) {
                     continue;
                 }
-                if (board[y0][x0]) {
+                if (board[row0][column0]) {
                     return true;
                 }
             }
@@ -45,8 +45,8 @@ public class Task8 {
         return false;
     }
 
-    private static boolean isInBound(int x) {
-        return 0 <= x && x < BOARD_SIZE;
+    private static boolean isNotInBound(int x) {
+        return !(0 <= x && x < BOARD_SIZE);
     }
 
     private static boolean isBoardValid(boolean[][] board) {

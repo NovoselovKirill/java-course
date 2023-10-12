@@ -9,7 +9,6 @@ public class Task1 {
     private static final String SEPARATOR = ":";
     private static final int RESULT_ON_INCORRECT_INPUT = -1;
     private static final int SECONDS_IN_MINUTE = 60;
-    private static final int MINUTES_IN_HOUR = 60;
 
     private static Integer tryParse(String string) {
         try {
@@ -39,7 +38,7 @@ public class Task1 {
         var isValidSeconds = 0 <= seconds && seconds < SECONDS_IN_MINUTE;
 
         return isValidMinutes && isValidSeconds
-            ? minutes * MINUTES_IN_HOUR + seconds
+            ? minutes * SECONDS_IN_MINUTE + seconds
             : RESULT_ON_INCORRECT_INPUT;
     }
 }

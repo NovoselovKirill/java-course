@@ -37,7 +37,7 @@ public class Task6 {
             return 0;
         }
 
-        int[] digits = DigitsHelper.toDigitsArray(current, REQUIRED_DIGITS_COUNT, DigitsHelper.BASE_10);
+        short[] digits = DigitsHelper.toDigitsArray(current, REQUIRED_DIGITS_COUNT, DigitsHelper.BASE_10);
 
         Arrays.sort(digits);
 

@@ -18,15 +18,22 @@ public class Task7 {
         if (n < 0) {
             throw new IllegalArgumentException();
         }
+        if (shift < 0) {
+            throw new IllegalArgumentException();
+        }
 
         int bits = DigitsHelper.countDigits(n, DigitsHelper.BASE_2);
         int shiftMod = shift % bits;
-        int mask = ~(0xffffffff << bits);
+        int mask = allNBitsAreOne(bits);
         int d = bits - shiftMod;
-        int res = toLeft
-            ? (n << shiftMod | (n >> d))
-            : (n >> shiftMod | (n << d));
+        int resWithoutMaskUse = toLeft
+            ? (n << shiftMod) | (n >> d)
+            : (n >> shiftMod) | (n << d);
 
-        return res & mask;
+        return resWithoutMaskUse & mask;
+    }
+
+    private static int allNBitsAreOne(int n) {
+        return ~(0xffffffff << n);
     }
 }
